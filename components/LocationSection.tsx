@@ -18,15 +18,15 @@ type MediaItem = {
 };
 
 const media: MediaItem[] = [
-  { type: 'video', src: gymVideo1, label: 'Warehouse Walkthrough' },
+  { type: 'video', src: gymVideo1, label: 'Live Session Highlight' },
   { type: 'image', src: gymPic1, label: 'Strength Floor' },
-  { type: 'image', src: gymPic2, label: 'Machine Zone' },
-  { type: 'image', src: gymPic3, label: 'Training Corner' },
-  { type: 'video', src: gymVideo2, label: 'Live Session' },
-  { type: 'image', src: gymPic4, label: 'Athlete Space' },
-  { type: 'image', src: gymPic5, label: 'Accessory Wall' },
-  { type: 'image', src: gymPic6, label: 'Conditioning Lane' },
-  { type: 'image', src: gymPic7, label: 'Power Setup' },
+  { type: 'image', src: gymPic2, label: 'Strength Floor' },
+  { type: 'image', src: gymPic3, label: 'The Turf' },
+  { type: 'video', src: gymVideo2, label: 'Live Session Highlight' },
+  { type: 'image', src: gymPic4, label: 'Mauy Thai' },
+  { type: 'image', src: gymPic5, label: 'Chiropractic Center (CIM)' },
+  { type: 'image', src: gymPic6, label: 'Coach Mike & Coach Khayri' },
+  { type: 'image', src: gymPic7, label: 'Barbershop' },
 ];
 
 const LocationSection: React.FC = () => {
