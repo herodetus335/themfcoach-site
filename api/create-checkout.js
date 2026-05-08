@@ -55,6 +55,7 @@ export default async function handler(req, res) {
     }
 
     const monthlyAmount = Math.round(chargePerSession * sessions * 100); // cents
+    const pricePerSession = (Math.round(chargePerSession * 100) / 100).toFixed(2);
 
     const duoLabel = duo ? " · Duo Training" : "";
 
@@ -94,10 +95,28 @@ export default async function handler(req, res) {
         location,
         packageType,
         sessions: String(sessions),
+        sessionsAmount: String(sessions),
         freq,
         duo: String(duo),
         duoSinglePayment: String(duoSinglePayment ?? false),
+        pricePerSession: pricePerSession,
+        pricePerSessionCents: String(Math.round(chargePerSession * 100)),
       },
+      ...(isRecurring && {
+        subscription_data: {
+          metadata: {
+            location,
+            packageType,
+            sessions: String(sessions),
+            sessionsAmount: String(sessions),
+            freq,
+            duo: String(duo),
+            duoSinglePayment: String(duoSinglePayment ?? false),
+            pricePerSession: pricePerSession,
+            pricePerSessionCents: String(Math.round(chargePerSession * 100)),
+          },
+        },
+      }),
     });
 
     res.status(200).json({ url: checkoutSession.url });
