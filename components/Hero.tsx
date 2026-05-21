@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
             <div className="absolute -inset-4 bg-brand-neon/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
             <img
               src={heroImage}
-              alt="Mikael Frey Coaching"
+              alt="Coach Mike — personal trainer and mobile fitness coach in Ashburn VA"
               className="w-auto h-auto min-h-[500px] max-h-[900px] scale-150 -translate-x-8 object-contain object-center drop-shadow-[0_0_30px_rgba(0,255,65,0.3)]"
             />
           </div>

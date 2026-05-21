@@ -32,8 +32,8 @@ const SuccessSystem: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16">
-          <h2 className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">The Process</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase">The Success System</h3>
+          <p className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">The Process</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase">The Success System</h2>
         </div>
 
         <div className="space-y-8 relative">
@@ -54,7 +54,7 @@ const SuccessSystem: React.FC = () => {
                <div className="bg-brand-black border border-white/5 p-8 rounded-2xl flex-1 hover:border-brand-neon/30 transition-colors">
                  <div className="flex items-center space-x-3 mb-3">
                    <span className="text-4xl font-black text-white/20 italic">0{index + 1}</span>
-                   <h4 className="text-xl font-bold text-white uppercase">{step.title}</h4>
+                   <h3 className="text-xl font-bold text-white uppercase">{step.title}</h3>
                  </div>
                  <p className="text-gray-400 pl-2 border-l-2 border-brand-neon/50">
                    {step.desc}

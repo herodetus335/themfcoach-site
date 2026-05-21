@@ -89,8 +89,8 @@ const WeightLossCalculator: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="mb-16 text-center">
-          <h2 className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">Free Tool</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase">Fitness Calculator</h3>
+          <p className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">Free Tool</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase">Fitness Calculator</h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
             Calculate your daily calorie target based on your goals. Get a personalized estimate to kickstart your transformation.
           </p>
@@ -288,7 +288,7 @@ const WeightLossCalculator: React.FC = () => {
                     <Dumbbell className="w-12 h-12 text-brand-neon/50" />
                   )}
                 </div>
-                <h4 className="text-xl font-bold text-white mb-2">Enter Your Details</h4>
+                <h3 className="text-xl font-bold text-white mb-2">Enter Your Details</h3>
                 <p className="text-gray-500 max-w-sm mx-auto">
                   {mode === 'loss'
                     ? 'Fill out the form to calculate your personalized daily calorie target for fat loss.'

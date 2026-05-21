@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Head } from 'vite-react-ssg';
+import { PAGE_META } from '../seo/pageMeta';
 import { useForm, ValidationError } from '@formspree/react';
 import Button from './Button';
 import { ChevronLeft, Check } from 'lucide-react';
@@ -115,6 +117,11 @@ const FormPage: React.FC = () => {
 
   if (state.succeeded) {
     return (
+      <>
+      <Head>
+        <title>{PAGE_META.formSuccess.title}</title>
+        <meta name="description" content={PAGE_META.formSuccess.description} />
+      </Head>
       <div className="min-h-screen pt-24 pb-12 flex items-center justify-center bg-brand-black relative">
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
              style={{ backgroundImage: 'radial-gradient(#00FF41 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
@@ -123,17 +130,23 @@ const FormPage: React.FC = () => {
           <div className="w-20 h-20 bg-brand-neon rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-black" />
           </div>
-          <h2 className="text-3xl font-black text-white uppercase italic mb-4">Application Received</h2>
+          <h1 className="text-3xl font-black text-white uppercase italic mb-4">Application Received</h1>
           <p className="text-gray-400 mb-8">
             Thank you for applying! I will review your application and get back to you within 24 hours to schedule your strategy session.
           </p>
           <Button to="/" variant="outline" fullWidth>Return Home</Button>
         </div>
       </div>
+      </>
     );
   }
 
   return (
+    <>
+    <Head>
+      <title>{PAGE_META.form.title}</title>
+      <meta name="description" content={PAGE_META.form.description} />
+    </Head>
     <div className="min-h-screen pt-24 pb-12 bg-brand-black relative">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link to="/" className="inline-flex items-center text-gray-400 hover:text-brand-neon mb-8 transition-colors font-bold uppercase tracking-wider text-sm">
@@ -504,6 +517,7 @@ const FormPage: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

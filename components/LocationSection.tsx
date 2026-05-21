@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, Truck, Warehouse, Dumbbell, HeartPulse } from 'lucide-react';
 import Button from './Button';
 import gymPic1 from '../images/newgympics/1.jpeg';
@@ -8,26 +8,80 @@ import gymPic4 from '../images/newgympics/4.jpeg';
 import gymPic5 from '../images/newgympics/5.jpeg';
 import gymPic6 from '../images/newgympics/6.jpeg';
 import gymPic7 from '../images/newgympics/7.jpeg';
-import gymVideo1 from '../images/newgympics/video1.mov';
-import gymVideo2 from '../images/newgympics/video2.mov';
 
-type MediaItem = {
-  type: 'image' | 'video';
+const GYM_VIDEO_BASE = '/images/newgympics';
+
+type ImageMediaItem = {
+  type: 'image';
   src: string;
   label: string;
 };
 
+type VideoMediaItem = {
+  type: 'video';
+  src: string;
+  poster: string;
+  label: string;
+};
+
+type MediaItem = ImageMediaItem | VideoMediaItem;
+
 const media: MediaItem[] = [
-  { type: 'video', src: gymVideo1, label: 'Live Session Highlight' },
+  { type: 'video', src: `${GYM_VIDEO_BASE}/video1.mp4`, poster: gymPic1, label: 'Live Session Highlight' },
   { type: 'image', src: gymPic1, label: 'Strength Floor' },
   { type: 'image', src: gymPic2, label: 'Strength Floor' },
   { type: 'image', src: gymPic3, label: 'The Turf' },
-  { type: 'video', src: gymVideo2, label: 'Live Session Highlight' },
+  { type: 'video', src: `${GYM_VIDEO_BASE}/video2.mp4`, poster: gymPic3, label: 'Live Session Highlight' },
   { type: 'image', src: gymPic4, label: 'Mauy Thai' },
   { type: 'image', src: gymPic5, label: 'Chiropractic Center (CIM)' },
   { type: 'image', src: gymPic6, label: 'Coach Mike & Coach Khayri' },
   { type: 'image', src: gymPic7, label: 'Barbershop' },
 ];
+
+type CarouselVideoProps = {
+  src: string;
+  poster: string;
+  label: string;
+  isActive: boolean;
+};
+
+const CarouselVideo: React.FC<CarouselVideoProps> = ({ src, poster, label, isActive }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isActive) {
+      if (video.dataset.src !== src) {
+        video.src = src;
+        video.dataset.src = src;
+        video.load();
+      }
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+      video.removeAttribute('src');
+      delete video.dataset.src;
+      video.load();
+    }
+  }, [isActive, src]);
+
+  return (
+    <video
+      ref={videoRef}
+      poster={poster}
+      className="w-full h-full object-cover"
+      controls
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-label={label}
+      title={label}
+    />
+  );
+};
 
 const LocationSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -48,14 +102,14 @@ const LocationSection: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-14 items-start">
           <div>
             <p className="text-brand-neon uppercase tracking-[0.2em] text-xs font-bold mb-3">Enter...</p>
-            <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase leading-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase leading-tight mb-6">
               Our new home base!
-            </h3>
+            </h2>
             <p className="text-lg text-gray-300 leading-relaxed mb-8">
               Introducing the new 11,000 sq ft warehouse training space built for performance. Dedicated zones
               for free weights, resistance bands, machines, and accessories keep every session precise and
               progression-focused, while recovery and finishing touches stay steps away. <br/><br/>Plus an integrated lineup on
-              the same campus: chiropractic, physical therapy, massage therapy, Muay Thai, and a barber. 
+              the same campus: chiropractic, physical therapy, massage therapy, Muay Thai, and a barber.
             </p>
 
             <div className="space-y-4 mb-10">
@@ -115,23 +169,25 @@ const LocationSection: React.FC = () => {
             <div className="relative bg-black/70 border border-white/10 rounded-3xl p-4">
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-black aspect-[4/5]">
                 {activeMedia.type === 'video' ? (
-                  <video
+                  <CarouselVideo
                     src={activeMedia.src}
-                    className="w-full h-full object-cover"
-                    controls
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
+                    poster={activeMedia.poster}
+                    label={activeMedia.label}
+                    isActive
                   />
                 ) : (
-                  <img src={activeMedia.src} alt={activeMedia.label} className="w-full h-full object-cover" />
+                  <img
+                    src={activeMedia.src}
+                    alt={`The MF Coach Ashburn gym — ${activeMedia.label}`}
+                    className="w-full h-full object-cover"
+                  />
                 )}
               </div>
               <div className="flex items-center justify-between mt-4">
                 <p className="text-sm uppercase tracking-widest text-gray-300">{activeMedia.label}</p>
                 <div className="flex items-center gap-2">
                   <button
+                    type="button"
                     onClick={previous}
                     className="w-10 h-10 rounded-full border border-white/20 text-white hover:border-brand-neon hover:text-brand-neon transition-colors flex items-center justify-center"
                     aria-label="Previous media"
@@ -139,6 +195,7 @@ const LocationSection: React.FC = () => {
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <button
+                    type="button"
                     onClick={next}
                     className="w-10 h-10 rounded-full border border-white/20 text-white hover:border-brand-neon hover:text-brand-neon transition-colors flex items-center justify-center"
                     aria-label="Next media"
@@ -152,18 +209,23 @@ const LocationSection: React.FC = () => {
                 {media.map((item, index) => (
                   <button
                     key={`${item.label}-${index}`}
+                    type="button"
                     onClick={() => setActiveIndex(index)}
-                    className={`h-16 rounded-lg overflow-hidden border transition-all ${
+                    className={`h-16 rounded-lg overflow-hidden border transition-all relative ${
                       index === activeIndex ? 'border-brand-neon scale-[1.02]' : 'border-white/10 hover:border-white/40'
                     }`}
                     aria-label={`View ${item.label}`}
                   >
-                    {item.type === 'video' ? (
-                      <div className="h-full w-full bg-black flex items-center justify-center text-xs text-brand-neon uppercase tracking-wider">
-                        Video
-                      </div>
-                    ) : (
-                      <img src={item.src} alt={item.label} className="h-full w-full object-cover" />
+                    <img
+                      src={item.type === 'video' ? item.poster : item.src}
+                      alt=""
+                      aria-hidden
+                      className="h-full w-full object-cover"
+                    />
+                    {item.type === 'video' && (
+                      <span className="absolute inset-0 flex items-center justify-center bg-black/40 text-[10px] font-bold uppercase tracking-wider text-brand-neon">
+                        Play
+                      </span>
                     )}
                   </button>
                 ))}

@@ -12,7 +12,7 @@ const TrustBar: React.FC = () => {
               <Award className="w-8 h-8 text-brand-neon" />
             </div>
             <div className="text-left">
-              <h3 className="text-2xl font-black text-white leading-none">4+ Years</h3>
+              <p className="text-2xl font-black text-white leading-none">4+ Years</p>
               <p className="text-sm text-gray-400 uppercase tracking-wide font-bold">Experience</p>
             </div>
           </div>
@@ -22,7 +22,7 @@ const TrustBar: React.FC = () => {
               <Users className="w-8 h-8 text-brand-neon" />
             </div>
             <div className="text-left">
-              <h3 className="text-2xl font-black text-white leading-none">100+</h3>
+              <p className="text-2xl font-black text-white leading-none">100+</p>
               <p className="text-sm text-gray-400 uppercase tracking-wide font-bold">Clients Transformed</p>
             </div>
           </div>
@@ -32,7 +32,7 @@ const TrustBar: React.FC = () => {
               <Stethoscope className="w-8 h-8 text-brand-neon" />
             </div>
             <div className="text-left">
-              <h3 className="text-2xl font-black text-white leading-none">Connected</h3>
+              <p className="text-2xl font-black text-white leading-none">Connected</p>
               <p className="text-sm text-gray-400 uppercase tracking-wide font-bold">DOCTORS, SPECIALISTS & MORE</p>
             </div>
           </div>

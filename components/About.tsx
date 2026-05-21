@@ -13,14 +13,14 @@ const About: React.FC = () => {
              <div className="absolute -inset-4 border-2 border-brand-neon/20 rounded-2xl translate-x-4 translate-y-4"></div>
              <img
                src={aboutImage}
-               alt="Mikael Frey Training"
+               alt="Coach Mike training a client at The MF Coach gym in Ashburn VA"
                className="w-full rounded-2xl relative z-10 shadow-2xl object-cover"
              />
           </div>
 
           <div className="w-full lg:w-1/2 order-1 lg:order-2">
-            <h2 className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">The Coach</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase mb-6">Training With<br/> Coach Mike</h3>
+            <p className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">The Coach</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase mb-6">Training With<br/> Coach Mike</h2>
             
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed mb-8">
               <p>

@@ -29,8 +29,8 @@ const Gallery: React.FC = () => {
     <section id="transformations" className="py-20 bg-brand-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">Real People. Real Results.</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase">See The Transformation</h3>
+          <p className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">Real People. Real Results.</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase">See The Transformation</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -39,7 +39,7 @@ const Gallery: React.FC = () => {
               <div className="aspect-[4/5] relative">
                 <img 
                   src={item.img} 
-                  alt={item.result} 
+                  alt={`Client transformation: ${item.goal} — ${item.result}`} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent"></div>
@@ -50,7 +50,7 @@ const Gallery: React.FC = () => {
                       {item.goal}
                     </span>
                   </div>
-                  <h4 className="text-2xl font-black text-white italic uppercase leading-none">{item.result}</h4>
+                  <h3 className="text-2xl font-black text-white italic uppercase leading-none">{item.result}</h3>
                 </div>
               </div>
             </div>

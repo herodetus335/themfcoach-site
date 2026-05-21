@@ -29,8 +29,8 @@ const Services: React.FC = () => {
     <section id="services" className="py-20 bg-brand-black relative">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">My Expertise</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white italic uppercase">How I Will Help You</h3>
+          <p className="text-brand-neon font-bold tracking-widest uppercase text-sm mb-2">My Expertise</p>
+          <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase">How I Will Help You</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -46,7 +46,7 @@ const Services: React.FC = () => {
                   <service.icon className="w-7 h-7" />
                 </div>
                 
-                <h4 className="text-xl font-black text-white uppercase italic mb-3">{service.title}</h4>
+                <h3 className="text-xl font-black text-white uppercase italic mb-3">{service.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {service.desc}
                 </p>
