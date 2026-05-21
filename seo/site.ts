@@ -5,10 +5,13 @@ export const SITE_URL =
 export const BUSINESS = {
   name: 'The MF Coach',
   email: 'themfcoach1@gmail.com',
-  /** Public business line — E.164 format (e.g. +17035551234). Must match Google Business Profile. */
-  telephone: '',
-  /** Google LocalBusiness price tier ($ = inexpensive, $$$$ = very expensive) */
-  priceRange: '$$',
+  /** Public business line — E.164 format. Must match Google Business Profile. */
+  telephone: '+17038651675',
+  /**
+   * Per session, per person (solo + duo): ~$43.63 (on-site duo, 6-mo) up to $100 (mobile solo).
+   * Google also accepts $–$$$$ symbols; $$ is a rough tier if a symbol is required.
+   */
+  priceRange: '$44–$100 per session per person',
   instagram: 'https://www.instagram.com/the_mf_coach/',
   address: {
     streetAddress: '44675 Cape Ct STE 185',
