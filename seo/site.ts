@@ -13,6 +13,7 @@ export const BUSINESS = {
    */
   priceRange: '$44–$100 per session per person',
   instagram: 'https://www.instagram.com/the_mf_coach/',
+  googleMaps: 'https://maps.app.goo.gl/gx63s4nMPmkZfAYa6',
   address: {
     streetAddress: '44675 Cape Ct STE 185',
     addressLocality: 'Ashburn',

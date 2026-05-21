@@ -13,7 +13,7 @@ export const localBusinessJsonLd = {
   email: BUSINESS.email,
   priceRange: BUSINESS.priceRange,
   ...(BUSINESS.telephone ? { telephone: BUSINESS.telephone } : {}),
-  sameAs: [BUSINESS.instagram],
+  sameAs: [BUSINESS.instagram, BUSINESS.googleMaps],
   image: `${SITE_URL}/assets/TheMFcoach_LogoGreen-BUuFKoKl.png`,
   address: {
     '@type': 'PostalAddress',
