@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.themfcoachweb.com" }],
+      "destination": "https://themfcoachweb.com/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/form", "destination": "/form.html" }
+  ]
+}
