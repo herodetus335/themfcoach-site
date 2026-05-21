@@ -14,8 +14,8 @@ const TrustBar: React.FC = () => {
               <Award className="w-8 h-8 text-brand-neon" />
             </div>
             <div className="text-left">
-              <p className="text-2xl font-black text-white leading-none">4-Phase</p>
-              <p className="text-sm text-gray-400 uppercase tracking-wide font-bold">System</p>
+              <p className="text-2xl font-black text-white leading-none">4-Phase™</p>
+              <p className="text-sm text-gray-400 uppercase tracking-wide font-bold">System Approach</p>
             </div>
           </div>
 
