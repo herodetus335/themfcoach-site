@@ -11,6 +11,8 @@ export const localBusinessJsonLd = {
     'Personal trainer in Ashburn VA offering on-site Ashburn gym & fitness coaching and in-home personal training across Loudoun County. Mobile fitness coach serving Ashburn through Fairfax, including Leesburg, Sterling, Herndon, and Reston.',
   url: SITE_URL,
   email: BUSINESS.email,
+  priceRange: BUSINESS.priceRange,
+  ...(BUSINESS.telephone ? { telephone: BUSINESS.telephone } : {}),
   sameAs: [BUSINESS.instagram],
   image: `${SITE_URL}/assets/TheMFcoach_LogoGreen-BUuFKoKl.png`,
   address: {

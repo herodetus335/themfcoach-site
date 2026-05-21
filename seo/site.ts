@@ -5,6 +5,10 @@ export const SITE_URL =
 export const BUSINESS = {
   name: 'The MF Coach',
   email: 'themfcoach1@gmail.com',
+  /** Public business line — E.164 format (e.g. +17035551234). Must match Google Business Profile. */
+  telephone: '',
+  /** Google LocalBusiness price tier ($ = inexpensive, $$$$ = very expensive) */
+  priceRange: '$$',
   instagram: 'https://www.instagram.com/the_mf_coach/',
   address: {
     streetAddress: '44675 Cape Ct STE 185',
