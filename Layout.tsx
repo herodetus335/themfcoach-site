@@ -9,6 +9,7 @@ const Layout: React.FC = () => {
   return (
     <>
       <Head>
+        <meta name="google-site-verification" content="GSaPP2RxqgJKEQRC5XjXSL4QQfeJ21SnnTIeZXeIHg8" />
         <script type="application/ld+json">
           {JSON.stringify(localBusinessJsonLd)}
         </script>
