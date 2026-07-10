@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
             <h2 className="text-white font-bold uppercase tracking-wider mb-4 text-sm">Connect</h2>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/the_mf_coach/"
+                href="https://www.instagram.com/themfcoach/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="The MF Coach on Instagram"
