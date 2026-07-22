@@ -4,7 +4,7 @@ const ONSITE = {
   label: "On-Site",
   emoji: "🏋️",
   subtitle: "44675 Cape Ct STE 185, Ashburn, VA 20147",
-  base: 85,
+  base: 90,
   rows: [
     { freq: "2× / Week", sessions: 8 },
     { freq: "3× / Week", sessions: 12 },
@@ -16,7 +16,7 @@ const MOBILE = {
   label: "Mobile",
   emoji: "📍",
   subtitle: "Ashburn to Fairfax",
-  base: 100,
+  base: 110,
   rows: [
     { freq: "2× / Week", sessions: 8 },
     { freq: "3× / Week", sessions: 12 },
@@ -26,8 +26,8 @@ const MOBILE = {
 
 const PACKAGES = [
   { key: "payg", name: "Pay As You Go", sub: "No contract", discount: 0, badge: null },
-  { key: "3mo", name: "3-Month", sub: "Monthly billing", discount: 0.10, badge: "SAVE 10%" },
-  { key: "6mo", name: "6-Month", sub: "Monthly billing", discount: 0.15, badge: "SAVE 15%" },
+  { key: "3mo", name: "3-Month", sub: "Monthly billing", discount: 0.05, badge: "SAVE 5%" },
+  { key: "6mo", name: "6-Month", sub: "Monthly billing", discount: 0.10, badge: "SAVE 10%" },
 ];
 
 function fmt(n) {
@@ -242,7 +242,7 @@ export default function PricingSection() {
               Prices shown are per person. Both partners must pay from the <strong style={{ color: "#aaa" }}>same card or bank account</strong>. At checkout, your per-person total is automatically multiplied by 2 to cover both people under one payment.
               <div style={{ marginTop: 6, color: "#888" }}>
                 <strong style={{ color: "#aaa" }}>Example:</strong> On-Site 3-Month 3×/week →{" "}
-                <strong style={{ color: "#00FF41" }}>($918 + $180) ÷ 2 = $549/mo per person</strong>
+                <strong style={{ color: "#00FF41" }}>($1,026 + $180) ÷ 2 = $603/mo per person</strong>
               </div>
             </div>
             <div style={{ marginTop: 12, fontSize: 11, color: "#444" }}>Other frequencies available — ask during your free assessment.</div>

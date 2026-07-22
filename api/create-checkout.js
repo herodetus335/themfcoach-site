@@ -3,14 +3,14 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const BASE_PRICES = {
-  onsite: 85,
-  mobile: 100,
+  onsite: 90,
+  mobile: 110,
 };
 
 const DISCOUNTS = {
   payg: 0,
-  "3mo": 0.10,
-  "6mo": 0.15,
+  "3mo": 0.05,
+  "6mo": 0.10,
 };
 
 const PACKAGE_LABELS = {
