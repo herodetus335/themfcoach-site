@@ -43,6 +43,8 @@ const FormPage: React.FC = () => {
   const [hasSetWeight, setHasSetWeight] = useState(false);
   const [hasSetGoalWeight, setHasSetGoalWeight] = useState(false);
   const [showMeasurementErrors, setShowMeasurementErrors] = useState(false);
+  const [referralSource, setReferralSource] = useState('');
+  const [referralOther, setReferralOther] = useState('');
 
   const heightDisplay = useMetric ? formatHeightMetric(heightInches) : heightInches;
   const heightUnit = useMetric ? 'cm' : 'in';
@@ -509,6 +511,47 @@ const FormPage: React.FC = () => {
               ></textarea>
               <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
             </div>
+
+            <div>
+              <label htmlFor="referral_source" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Where did you find me?</label>
+              <select
+                name="referral_source"
+                id="referral_source"
+                required
+                value={referralSource}
+                onChange={(e) => {
+                  setReferralSource(e.target.value);
+                  if (e.target.value !== 'Other') setReferralOther('');
+                }}
+                className="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-neon focus:ring-1 focus:ring-brand-neon outline-none transition-all appearance-none"
+              >
+                <option value="" disabled>Select...</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Reddit">Reddit</option>
+                <option value="Google">Google</option>
+                <option value="Word of mouth">Word of mouth</option>
+                <option value="Other">Other</option>
+              </select>
+              <ValidationError prefix="Referral Source" field="referral_source" errors={state.errors} className="text-red-500 text-sm mt-1" />
+            </div>
+
+            {referralSource === 'Other' && (
+              <div>
+                <label htmlFor="referral_source_other" className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Please specify</label>
+                <input
+                  type="text"
+                  name="referral_source_other"
+                  id="referral_source_other"
+                  required
+                  value={referralOther}
+                  onChange={(e) => setReferralOther(e.target.value)}
+                  className="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-neon focus:ring-1 focus:ring-brand-neon outline-none transition-all"
+                  placeholder="Where did you hear about me?"
+                />
+                <ValidationError prefix="Referral Source Other" field="referral_source_other" errors={state.errors} className="text-red-500 text-sm mt-1" />
+              </div>
+            )}
 
             <Button type="submit" fullWidth variant="primary" className="py-4 text-lg" disabled={state.submitting}>
               {state.submitting ? 'Submitting...' : 'Secure Your Spot'}
