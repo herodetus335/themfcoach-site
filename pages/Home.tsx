@@ -9,7 +9,7 @@ import About from '../components/About';
 import LocationSection from '../components/LocationSection';
 import Gallery from '../components/Gallery';
 import SuccessSystem from '../components/SuccessSystem';
-import WeightLossCalculator from '../components/WeightLossCalculator';
+import CalculatorTeaser from '../components/CalculatorTeaser';
 import Button from '../components/Button';
 
 const Home: React.FC = () => {
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       <LocationSection />
       <Gallery />
       <SuccessSystem />
-      <WeightLossCalculator />
+      <CalculatorTeaser />
 
       <section className="py-24 bg-brand-black border-t border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-brand-neon/5"></div>

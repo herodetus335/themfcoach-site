@@ -19,4 +19,14 @@ export const PAGE_META = {
     description:
       'Your coaching application was received. The MF Coach will follow up within 24 hours to schedule your strategy session.',
   },
+  calculator: {
+    title: 'Free Calorie & Protein Calculator | The MF Coach',
+    description:
+      'Find your personalized calorie and protein targets in under 60 seconds. Free fitness calculator from The MF Coach — Ashburn VA personal training and online coaching.',
+  },
+  privacy: {
+    title: 'Privacy Policy | The MF Coach',
+    description:
+      'How The MF Coach collects, uses, and protects your information when you use our website, calculator, and coaching application forms.',
+  },
 } as const;

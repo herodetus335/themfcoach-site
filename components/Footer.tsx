@@ -62,6 +62,16 @@ const Footer: React.FC = () => {
                   Apply
                 </Link>
               </li>
+              <li>
+                <Link to="/calculator" className="hover:text-brand-neon transition-colors">
+                  Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-brand-neon transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
