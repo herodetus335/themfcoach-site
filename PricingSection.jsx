@@ -25,7 +25,7 @@ const MOBILE = {
 };
 
 const PACKAGES = [
-  { key: "payg", name: "Pay As You Go", sub: "No contract", discount: 0, badge: null },
+  { key: "payg", name: "Pay As You Go", sub: "Cancel anytime", discount: 0, badge: null },
   { key: "3mo", name: "3-Month", sub: "Monthly billing", discount: 0.05, badge: "SAVE 5%" },
   { key: "6mo", name: "6-Month", sub: "Monthly billing", discount: 0.10, badge: "SAVE 10%" },
 ];

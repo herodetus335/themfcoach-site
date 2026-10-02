@@ -62,6 +62,11 @@ export default async function handler(req, res) {
     const productName = `The MF Coach — ${LOCATION_LABELS[location]} · ${PACKAGE_LABELS[packageType]} · ${freq}${duoLabel}`;
 
     const isRecurring = true;
+    const duoNote = duo && duoSinglePayment ? " Full couple price on one card." : duo ? " Per person price." : "";
+    const description =
+      packageType === "payg"
+        ? `Billed monthly unless canceled. Cancel anytime.${duoNote} Training agreement required.`
+        : `Billed monthly.${duoNote} Commitment enforced via signed training agreement.`;
 
     const checkoutSession = await stripe.checkout.sessions.create({
       payment_method_types: ["card", "us_bank_account"],
@@ -78,9 +83,7 @@ export default async function handler(req, res) {
             currency: "usd",
             product_data: {
               name: productName,
-              description: isRecurring
-                ? `Billed monthly. ${duo && duoSinglePayment ? "Full couple price on one card. " : duo ? "Per person price. " : ""}Commitment enforced via signed training agreement.`
-                : `One-time payment. ${duo && duoSinglePayment ? "Full couple price on one card." : duo ? "Per person price." : ""}`,
+              description,
             },
             unit_amount: monthlyAmount,
             ...(isRecurring && { recurring: { interval: "month" } }),
