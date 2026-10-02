@@ -4,7 +4,7 @@ const ONSITE = {
   label: "On-Site",
   emoji: "🏋️",
   subtitle: "44675 Cape Ct STE 185, Ashburn, VA 20147",
-  base: 90,
+  base: 100,
   rows: [
     { freq: "2× / Week", sessions: 8 },
     { freq: "3× / Week", sessions: 12 },
@@ -16,7 +16,7 @@ const MOBILE = {
   label: "Mobile",
   emoji: "📍",
   subtitle: "Ashburn to Fairfax",
-  base: 110,
+  base: 121,
   rows: [
     { freq: "2× / Week", sessions: 8 },
     { freq: "3× / Week", sessions: 12 },
@@ -97,7 +97,7 @@ function PricingGrid({ location, duoEnabled, loadingKey, onCheckout }) {
                 </td>
                 {PACKAGES.map((pkg) => {
                   const basePerSession = loc.base * (1 - pkg.discount);
-                  const duoAddon = duoEnabled ? 15 : 0;
+                  const duoAddon = duoEnabled ? 16.5 : 0;
                   const totalPerSession = basePerSession + duoAddon;
                   const perPersonPerSession = duoEnabled ? totalPerSession / 2 : totalPerSession;
                   const monthly = perPersonPerSession * row.sessions;
@@ -199,7 +199,7 @@ export default function PricingSection() {
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
           <button onClick={() => setDuoEnabled((p) => !p)}
             style={{ padding: "10px 20px", borderRadius: 8, border: "1px solid rgba(255,255,255,0.16)", background: duoEnabled ? "#00FF41" : "#0B0B0B", color: duoEnabled ? "#000" : "#9CA3AF", fontSize: 12, fontWeight: 800, letterSpacing: 1.2, textTransform: "uppercase", cursor: "pointer", transition: "all 0.15s ease", fontFamily: "inherit" }}>
-            {duoEnabled ? "Duo Training: On (+$15/session total, split between 2)" : "Duo Training: Off"}
+            {duoEnabled ? "Duo Training: On (+$16.50/session total, split between 2)" : "Duo Training: Off"}
           </button>
         </div>
 
@@ -233,7 +233,7 @@ export default function PricingSection() {
               {PACKAGES.map((pkg) => (
                 <div key={pkg.key} style={{ background: pkg.key === "3mo" ? "rgba(0,255,65,0.08)" : "#1c1c1c", border: `1px solid ${pkg.key === "3mo" ? "#00FF41" : "#252525"}`, borderRadius: 8, padding: "12px 8px", textAlign: "center" }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: pkg.key === "3mo" ? "#00FF41" : "#555", marginBottom: 4 }}>{pkg.name}</div>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: "#fff", lineHeight: 1 }}>+$15</div>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: "#fff", lineHeight: 1 }}>+$16.50</div>
                   <div style={{ fontSize: 10, color: "#444", marginTop: 2 }}>per session total</div>
                 </div>
               ))}
@@ -242,7 +242,7 @@ export default function PricingSection() {
               Prices shown are per person. Both partners must pay from the <strong style={{ color: "#aaa" }}>same card or bank account</strong>. At checkout, your per-person total is automatically multiplied by 2 to cover both people under one payment.
               <div style={{ marginTop: 6, color: "#888" }}>
                 <strong style={{ color: "#aaa" }}>Example:</strong> On-Site 3-Month 3×/week →{" "}
-                <strong style={{ color: "#00FF41" }}>($1,026 + $180) ÷ 2 = $603/mo per person</strong>
+                <strong style={{ color: "#00FF41" }}>($1,140 + $198) ÷ 2 = $669/mo per person</strong>
               </div>
             </div>
             <div style={{ marginTop: 12, fontSize: 11, color: "#444" }}>Other frequencies available — ask during your free assessment.</div>

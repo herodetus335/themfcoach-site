@@ -8,10 +8,10 @@ export const BUSINESS = {
   /** Public business line — E.164 format. Must match Google Business Profile. */
   telephone: '+17038651675',
   /**
-   * Per session, per person (solo + duo): ~$48 (on-site duo, 6-mo) up to $110 (mobile solo PAYG).
+   * Per session, per person (solo + duo): ~$53 (on-site duo, 6-mo) up to $121 (mobile solo PAYG).
    * Google also accepts $–$$$$ symbols; $$ is a rough tier if a symbol is required.
    */
-  priceRange: '$48–$110 per session per person',
+  priceRange: '$53–$121 per session per person',
   instagram: 'https://www.instagram.com/the_mf_coach/',
   googleMaps: 'https://maps.app.goo.gl/gx63s4nMPmkZfAYa6',
   address: {

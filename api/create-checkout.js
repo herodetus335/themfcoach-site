@@ -3,8 +3,8 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const BASE_PRICES = {
-  onsite: 90,
-  mobile: 110,
+  onsite: 100,
+  mobile: 121,
 };
 
 const DISCOUNTS = {
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     const base = BASE_PRICES[location];
     const discount = DISCOUNTS[packageType];
     const basePerSession = base * (1 - discount);
-    const duoAddon = duo ? 15 : 0;
+    const duoAddon = duo ? 16.5 : 0;
     const totalPerSessionFull = basePerSession + duoAddon;
 
     // If duo + single payment: charge full couple total on one card
