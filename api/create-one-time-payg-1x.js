@@ -2,7 +2,8 @@ import Stripe from "stripe";
 
 /**
  * Special one-time checkout — does NOT use or change main site pricing.
- * On-Site PAYG · 1× / Week · $90 per session · single session · mode: payment
+ * On-Site PAYG · 1× / Week · $90 per session · 4 sessions/mo · mode: payment
+ * Total: $360 one-time (not a subscription)
  *
  * Shareable: GET /api/create-one-time-payg-1x  → redirects to Stripe
  * Or POST same path → JSON { url }
@@ -10,7 +11,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const PRICE_PER_SESSION = 90;
-const SESSIONS = 1;
+const SESSIONS = 4;
 const FREQ = "1× / Week";
 const LOCATION = "onsite";
 const PACKAGE_TYPE = "payg";
@@ -49,7 +50,7 @@ export default async function handler(req, res) {
             product_data: {
               name: productName,
               description:
-                "One-time payment for 1 session at $90. Pay as you go · 1× / week schedule. Training agreement required.",
+                "One-time payment for 4 sessions ($90/session). Pay as you go · 1× / week. Training agreement required.",
             },
             unit_amount: totalCents,
           },
