@@ -83,6 +83,11 @@ function inchesToFeetInches(totalInches: number): { feet: string; inches: string
   return { feet: String(feet), inches: String(inches) };
 }
 
+function isValidPhone(phone: string): boolean {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length === 10 || (digits.length === 11 && digits.startsWith('1'));
+}
+
 const CalculatorPage: React.FC = () => {
   const [formspreeState, submitToFormspree] = useForm(FORMSPREE_FORM_ID, {
     endpoint: FORMSPREE_ENDPOINT,
@@ -101,6 +106,8 @@ const CalculatorPage: React.FC = () => {
   const [gender, setGender] = useState<'male' | 'female'>('male');
   const [activityLevel, setActivityLevel] = useState('1.55');
   const [firstName, setFirstName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -219,8 +226,15 @@ const CalculatorPage: React.FC = () => {
     if (isSubmitting || showResults || step !== 2) return;
 
     setEmailError('');
+    setPhoneError('');
     setFormError('');
     setSubmitFailed(false);
+
+    const trimmedPhone = phone.trim();
+    if (!isValidPhone(trimmedPhone)) {
+      setPhoneError('Please enter a valid phone number.');
+      return;
+    }
 
     const trimmedEmail = email.trim();
     if (!isValidEmail(trimmedEmail)) {
@@ -268,6 +282,7 @@ const CalculatorPage: React.FC = () => {
     // Posts to: https://formspree.io/f/mbdnnozk
     const payload = {
       first_name: firstName.trim(),
+      phone: trimmedPhone,
       email: trimmedEmail,
       goal_type: mode === 'loss' ? 'fat loss' : 'muscle gain',
       current_weight_lbs: currentWeight,
@@ -785,6 +800,41 @@ const CalculatorPage: React.FC = () => {
                       </div>
 
                       <div>
+                        <label htmlFor="phone" className={labelClass}>
+                          Phone Number
+                        </label>
+                        <input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          autoComplete="tel"
+                          inputMode="tel"
+                          value={phone}
+                          onChange={(e) => {
+                            setPhone(e.target.value);
+                            if (phoneError) setPhoneError('');
+                            if (submitFailed) setSubmitFailed(false);
+                          }}
+                          className={inputClass}
+                          placeholder="(703) 555-0123"
+                          required
+                          aria-invalid={Boolean(phoneError)}
+                          aria-describedby={phoneError ? 'phone-error' : undefined}
+                        />
+                        {phoneError && (
+                          <p id="phone-error" className="text-red-400 text-sm mt-1" role="alert">
+                            {phoneError}
+                          </p>
+                        )}
+                        <ValidationError
+                          prefix="Phone"
+                          field="phone"
+                          errors={formspreeState.errors}
+                          className="text-red-400 text-sm mt-1"
+                        />
+                      </div>
+
+                      <div>
                         <label htmlFor="email" className={labelClass}>
                           Email
                         </label>
@@ -851,8 +901,9 @@ const CalculatorPage: React.FC = () => {
 
                       <p className="text-gray-400 text-xs leading-relaxed text-center px-1">
                         By submitting, you agree to receive your calculator results and occasional
-                        fitness tips, updates, and offers from The MF Coach by email. You can
-                        unsubscribe at any time.{' '}
+                        fitness tips, updates, and offers from The MF Coach by email and SMS.
+                        Message and data rates may apply. You can unsubscribe or opt out at any
+                        time.{' '}
                         <Link
                           to="/privacy"
                           className="text-gray-200 underline underline-offset-2 hover:text-brand-neon transition-colors"
